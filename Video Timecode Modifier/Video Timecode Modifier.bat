@@ -17,13 +17,7 @@ Set OutputDir=%~dp1
 
 Set SourceScriptDirectory=%~dp0
 
-REM set inputfile="%SourceScriptDirectory%metaorig.txt"
-REM set outputfile="%SourceScriptDirectory%meta.txt"
-
 set /p tc=Enter Video Timecode:
-
-
-REM call :FindReplace "timecodeoverwrite" "%tc%" %inputfile%
 
 START "" /WAIT "%SourceScriptDirectory%bin\ffmpeg.exe" -i %1 -map_metadata 0:s:0 -metadata creation_time=%tc% -codec copy "%OutputDir%%prepend%%~n1%postpend%%~x1"
 
